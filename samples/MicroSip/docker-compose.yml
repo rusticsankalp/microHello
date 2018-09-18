@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  middleservice:
+    image: middleservice
+    build:
+      context: .\MiddleService
+      dockerfile: MiddleService/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development 
+    container_name: middleservice
+    ports:
+      - "55983:80"
