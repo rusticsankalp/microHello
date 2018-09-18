@@ -2,6 +2,8 @@ version: '3.4'
 networks:
 
    frontend:
+   backend:
+
 services:
   middleservice:
     image: middleservice
@@ -15,3 +17,17 @@ services:
       - "55983:80"
     networks:
       - frontend 
+      - backend
+    depends_on:
+       - mssqlserver
+
+  mssqlserver:
+     image: "microsoft/mssql-server-linux:latest"
+     ports:
+        - "1445:1433"
+     container_name: mssqlcontainer
+     environment:
+        ACCEPT_EULA: Y
+        SA_PASSWORD: ProductApi(!)
+     networks:
+        - backend
