@@ -1,5 +1,7 @@
 version: '3.4'
+networks:
 
+   frontend:
 services:
   middleservice:
     image: middleservice
@@ -11,3 +13,5 @@ services:
     container_name: middleservice
     ports:
       - "55983:80"
+    networks:
+      - frontend 
